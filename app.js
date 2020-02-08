@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
-  secret: "You can hack it easily.",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -110,7 +110,6 @@ app.get("/bloghome", function(req, res){
 });
 
 
-
 app.get("/compose", function(req, res){
   res.render("compose");
 });
@@ -150,7 +149,6 @@ app.get("/contact", function(req, res){
   res.render("contact", {contactContent: contactContent});
 });
 
-
 app.get("/signup", function(req, res){
   res.render("signup");
 });
@@ -158,9 +156,6 @@ app.get("/signup", function(req, res){
 app.get("/login", function(req, res){
   res.render("login");
 });
-
-
-
 
 
 app.post("/signup", function(req, res){
@@ -209,9 +204,6 @@ app.post("/login", function(req, res){
 // Promise.then((res) => {
 //   return reportToUser(JSON.parse(res)); // Note the typo (`pasre`)
 // }); // No `.catch()` or `.then()`
-
-
-
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
