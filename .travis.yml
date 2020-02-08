@@ -6,8 +6,8 @@ services:
 before_install:
     - docker build -t pushp132129/vision-test -f Dockerfile.dev .
     
-# script:
-#     - docker run pushp132129/vision-test npm test -- --coverage
+script:
+    - docker run pushp132129/vision-test test -- --coverage
     
     #Pushing images to the DockerHub
 after_success:
