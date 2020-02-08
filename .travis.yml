@@ -13,8 +13,8 @@ before_install:
 install:
     - npm install
     
-script:
-    - npm run test
+# script:
+#     - npm run test
     # - docker run pushp132129/vision-test npm test -- --coverage
     
     #Pushing images to the DockerHub
