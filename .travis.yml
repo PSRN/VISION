@@ -10,8 +10,8 @@ services:
 before_install:
     # - docker build -t pushp132129/vision-test -f Dockerfile.dev .
 
-install:
-    - npm install
+# install:
+#     - npm install
     
 # script:
 #     - npm run test
