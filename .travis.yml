@@ -1,24 +1,24 @@
 sudo: required
 language: node_js
 node_js:
-    - "12.15.0"
+    - 12
 services:
     - mongodb
     - docker
 
 
 before_install:
-    # - docker build -t pushp132129/vision-test -f Dockerfile.dev .
+    - npm i -g npm@12
+    - docker build -t pushp132129/vision-test -f Dockerfile.dev .
 
 # install:
 #     - npm install
     
-# script:
-#     - npm run test
-    # - docker run pushp132129/vision-test npm test -- --coverage
+script:
+    - docker run pushp132129/vision-test npm test -- --coverage
     
     #Pushing images to the DockerHub
-after_success:
+    after_success:
     - docker build -t pushp132129/vision-app 
     - docker build -t pushp132129/vision-mongo 
 

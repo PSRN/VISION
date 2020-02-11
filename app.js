@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
-  secret: process.env.SECRET,
+  secret: "You can hack it easily.",
   resave: false,
   saveUninitialized: false
 }));
@@ -110,6 +110,7 @@ app.get("/bloghome", function(req, res){
 });
 
 
+
 app.get("/compose", function(req, res){
   res.render("compose");
 });
@@ -141,6 +142,8 @@ const requestedPostId = req.params.postId;
 
 });
 
+
+
 app.get("/about", function(req, res){
   res.render("about", {aboutContent: aboutContent});
 });
@@ -148,6 +151,7 @@ app.get("/about", function(req, res){
 app.get("/contact", function(req, res){
   res.render("contact", {contactContent: contactContent});
 });
+
 
 app.get("/signup", function(req, res){
   res.render("signup");
@@ -158,6 +162,9 @@ app.get("/login", function(req, res){
 });
 
 
+
+
+
 app.post("/signup", function(req, res){
 
     User.register({username: req.body.username}, req.body.password, function(err, user){
@@ -166,7 +173,7 @@ app.post("/signup", function(req, res){
         res.redirect("/signup");
       } else {
         passport.authenticate("local")(req, res, function(){
-          res.redirect("/bloghome");
+          res.redirect("/home");
         });
       }
     });
@@ -204,6 +211,12 @@ app.post("/login", function(req, res){
 // Promise.then((res) => {
 //   return reportToUser(JSON.parse(res)); // Note the typo (`pasre`)
 // }); // No `.catch()` or `.then()`
+
+app.get("/game",function(req, res){
+  res.render("game");
+})
+
+
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");

@@ -4,8 +4,8 @@
   "description": "Blog Website",
   "main": "app.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "npm test"
   },
   "author": "",
   "license": "ISC",
