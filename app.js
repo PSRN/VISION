@@ -1,7 +1,10 @@
+//using ES6
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
+const router = express.Router();
+// const db = require('./db');
+// const ejs = require("ejs");
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require("passport");
@@ -12,7 +15,7 @@ const findOrCreate = require('mongoose-findorcreate');
 // const Promise = require('promise');
 // const resource = new SomeResource();
 
-const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
+const homeStartingContent = "Vision Blog contains the blogs related to Cloud Computing and AI Deep Learning.";
 const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
 const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
@@ -30,7 +33,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/blogDB", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://mongo:27017/visionDB", {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => console.log('MongoDB Connected'));
 mongoose.set("useCreateIndex", true);
 
 const postSchema = {
@@ -64,7 +68,7 @@ passport.deserializeUser(function(id, done){
 });
 
 passport.use(new GoogleStrategy({
-  clientID: process.env.CLIENT_ID,
+  clientID: "237831104802-t04ju94thnijjehosjp80fnk5n1ld0mk.apps.googleusercontent.com",
   clientSecret: process.env.CLIENT_SECRET,
   callbackURL: "http://localhost:3000/auth/google/bloghome",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
@@ -214,10 +218,9 @@ app.post("/login", function(req, res){
 
 app.get("/game",function(req, res){
   res.render("game");
-})
-
+});
 
 
 app.listen(3000, function() {
-  console.log("Server started on port 3000");
+  console.log("Server started on port: 3000 !");
 });

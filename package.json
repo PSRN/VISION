@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": ""
   },
-  "author": "",
+  "author": "Pushpendra, Shree, Ravinder, Noori, Meenu",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -24,4 +25,5 @@
     "passport-local-mongoose": "^6.0.1",
     "promise": "^8.0.3"
   }
+  
 }
