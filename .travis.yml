@@ -5,17 +5,17 @@ services:
 
 
 before_install:
-    - docker build -t pushp132129/vision-test -f Dockerfile.dev .
+    - docker build -t pushp132129/vision-app -f Dockerfile.dev .
 
 
     
 script:
-    - docker run pushp132129/vision-test npm test -- --coverage
+    - docker run -e CI=true pushp132129/vision-app npm test
     
     #Pushing images to the DockerHub
 after_success:
     - docker build -t pushp132129/vision-app 
-    - docker build -t pushp132129/vision-mongo 
+  
 
     #Logging into the Docker CLI
     
@@ -23,5 +23,5 @@ after_success:
     
     #Pushing the images to the DockerHub
     - docker push pushp132129/vision-app
-    - docker push pushp132129/vision-mongo
+   
         
