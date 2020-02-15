@@ -33,10 +33,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://mongo:27017/visionDB", {useNewUrlParser: true, useUnifiedTopology: true,  server: {
+mongoose.connect("mongodb://mongo:27017/visionDB", {useNewUrlParser: true, useUnifiedTopology: true , 
+server: {
   socketOptions: {
     socketTimeoutMS: 0,
-    connectTimeoutMS: 0
+    connectionTimeout: 0
   }
 }})
 .then(() => console.log('MongoDB Connected'));
