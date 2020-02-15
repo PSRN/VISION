@@ -33,6 +33,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+mongoose.Promise = global.Promise;
+
 mongoose.connect("mongodb://mongo:27017/visionDB", {useNewUrlParser: true, useUnifiedTopology: true , 
 server: {
   socketOptions: {
@@ -42,6 +44,8 @@ server: {
 }})
 .then(() => console.log('MongoDB Connected'));
 mongoose.set("useCreateIndex", true);
+
+mongoose.connection.once('open', () => console.log(' connected to the database.'));
 
 const postSchema = {
   title: String,
