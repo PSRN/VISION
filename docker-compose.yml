@@ -6,8 +6,11 @@ services:
         build: .
         ports: 
             - "3000:3000"
-        links: 
+        environment: 
+            - "mongodb://mongo:27017/visionDB"
+        depends_on:
             - mongo
+
     mongo:
         container_name: mongo
         build: 

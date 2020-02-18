@@ -35,10 +35,9 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect("mongodb://mongo:27017/visionDB", {
   useNewUrlParser: true,
-   useUnifiedTopology: true ,
+   useUnifiedTopology: true,
    useCreateIndex: true, 
-})
-.then(() => console.log('MongoDB Connected'));
+}).then(() => console.log('MongoDB Connected'));
 mongoose.set("useCreateIndex", true);
 
 mongoose.connection.once('open', () => console.log(' Connected to the database.'));
