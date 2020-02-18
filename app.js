@@ -33,13 +33,11 @@ app.use(passport.session());
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://mongo:27017/visionDB", {useNewUrlParser: true, useUnifiedTopology: true , 
-server: {
-  socketOptions: {
-    socketTimeoutMS: 0,
-    connectionTimeout: 0
-  }
-}})
+mongoose.connect("mongodb://mongo:27017/visionDB", {
+  useNewUrlParser: true,
+   useUnifiedTopology: true ,
+   useCreateIndex: true, 
+})
 .then(() => console.log('MongoDB Connected'));
 mongoose.set("useCreateIndex", true);
 
