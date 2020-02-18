@@ -45,7 +45,7 @@ server: {
 .then(() => console.log('MongoDB Connected'));
 mongoose.set("useCreateIndex", true);
 
-mongoose.connection.once('open', () => console.log(' connected to the database.'));
+mongoose.connection.once('open', () => console.log(' Connected to the database.'));
 
 const postSchema = {
   title: String,
