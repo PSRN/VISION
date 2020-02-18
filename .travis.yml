@@ -14,7 +14,8 @@ script:
     
     #Pushing images to the DockerHub
 after_success:
-    - docker build -t pushp132129/vision-app 
+    - docker build -t pushp132129/vision-app
+    - docker build -t pushp132129/vision-database ./Database  
   
 
     #Logging into the Docker CLI
@@ -23,5 +24,5 @@ after_success:
     
     #Pushing the images to the DockerHub
     - docker push pushp132129/vision-app
-   
+    - docker push pushp132129/vision-database
         

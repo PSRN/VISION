@@ -1,10 +1,8 @@
-//using ES6
+
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
-// const db = require('./db');
-// const ejs = require("ejs");
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require("passport");
@@ -25,7 +23,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
-  secret: "You can hack it easily.",
+  secret: "Its not easy to hack now.",
   resave: false,
   saveUninitialized: false
 }));
