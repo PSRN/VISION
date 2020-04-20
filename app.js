@@ -33,7 +33,7 @@ app.use(passport.session());
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://mongo:27017/visionDB", {
+mongoose.connect("mongodb://localhost:27017/visionDB", {
   useNewUrlParser: true,
    useUnifiedTopology: true,
    useCreateIndex: true, 
@@ -205,21 +205,6 @@ app.post("/login", function(req, res){
    });
 
 });
-
-
-// function SomeResource() {
-//   // Initially set the loaded status to a rejected promise
-//   this.loaded = Promise.reject(new Error('Resource not yet loaded!'));
-// }
-
-// process.on('unhandledRejection', (reason, promise) => {
-//   console.log('Unhandled Rejection at:', promise, 'reason:', reason);
-//   // Application specific logging, throwing an error, or other logic here
-// });
-
-// Promise.then((res) => {
-//   return reportToUser(JSON.parse(res)); // Note the typo (`pasre`)
-// }); // No `.catch()` or `.then()`
 
 app.get("/game",function(req, res){
   res.render("game");
